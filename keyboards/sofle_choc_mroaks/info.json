@@ -1,0 +1,38 @@
+{
+    "keyboard_name": "Sofle Choc",
+    "manufacturer": "Mr. Oaks",
+    "url": "https://github.com/josefadamcik/SofleKeyboard",
+    "maintainer": "Mr. Oaks",
+    "usb": {
+        "device_version": "0.0.1",
+        "pid": "0x5343",
+        "vid": "0x424C"
+    },
+    "features": {
+        "bootmagic": true,
+        "oled": true,
+        "rgb_matrix": true,
+        "rgblight": false,
+        "extrakey": true,
+        "mousekey": false
+    },
+    "build": {
+        "lto": true
+    },
+    "matrix_pins": {
+        "cols": ["F6", "F7", "B1", "B3", "B2", "B6"],
+        "rows": ["C6", "D7", "E6", "B4", "B5"]
+    },
+    "diode_direction": "COL2ROW",
+    "encoder": {
+        "enabled": true,
+        "rotary": [
+            { "pin_a": "F5", "pin_b": "F4" }
+        ]
+    },
+    "split": {
+        "enabled": true
+    },
+    "processor": "atmega32u4"
+
+}

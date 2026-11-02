@@ -1,0 +1,54 @@
+name: Build QMK Firmware
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Firmware
+    runs-on: ubuntu-latest
+    container: ghcr.io/qmk/qmk_cli:latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Checkout QMK Firmware
+        uses: actions/checkout@v4
+        with:
+          repository: qmk/qmk_firmware
+          ref: master
+          path: qmk_firmware
+          submodules: recursive
+
+      - name: Install Dependencies
+        run: |
+          pip install -r qmk_firmware/requirements.txt
+
+      - name: Configure QMK CLI
+        run: |
+          qmk config user.qmk_home=$GITHUB_WORKSPACE/qmk_firmware
+          qmk config user.overlay_dir=$GITHUB_WORKSPACE
+          qmk config compile.parallel=$(nproc)
+
+      - name: Build mroaks keymap
+        run: |
+          qmk compile -kb sofle_choc_mroaks -km mroaks
+
+      - name: Build army keymap
+        run: |
+          qmk compile -kb sofle_choc_mroaks -km army
+
+      - name: Archive Firmware Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: sofle-choc-firmware
+          path: |
+            *.hex
+            qmk_firmware/.build/*.hex
