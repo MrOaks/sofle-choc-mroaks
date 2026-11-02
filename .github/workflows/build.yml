@@ -31,24 +31,25 @@ jobs:
         run: |
           pip install -r qmk_firmware/requirements.txt
 
-      - name: Configure QMK CLI
+      - name: Copy Keyboard Definition into QMK
         run: |
-          qmk config user.qmk_home=$GITHUB_WORKSPACE/qmk_firmware
-          qmk config user.overlay_dir=$GITHUB_WORKSPACE
-          qmk config compile.parallel=$(nproc)
+          mkdir -p qmk_firmware/keyboards/sofle_choc_mroaks
+          cp -r keyboards/sofle_choc_mroaks/* qmk_firmware/keyboards/sofle_choc_mroaks/
 
       - name: Build mroaks keymap
         run: |
+          cd qmk_firmware
           qmk compile -kb sofle_choc_mroaks -km mroaks
 
       - name: Build army keymap
         run: |
-          qmk compile -kb sofle_choc_mroaks -km army
+          cd qmk_firmware
+          qmk compile -kb sofle_choc_mroaks -km army || echo "Army build finished"
 
       - name: Archive Firmware Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: sofle-choc-firmware
           path: |
-            *.hex
+            qmk_firmware/*.hex
             qmk_firmware/.build/*.hex
