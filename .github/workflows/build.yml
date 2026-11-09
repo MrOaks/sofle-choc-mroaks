@@ -45,6 +45,15 @@ jobs:
         run: |
           make sofle_choc:default 2>&1 | tee build_default.log || echo "Default build skipped"
 
+      - name: Collect Firmware Files
+        if: always()
+        run: |
+          mkdir -p firmware_binaries
+          find . -maxdepth 3 -name "*.hex" -exec cp -v {} firmware_binaries/ \; || true
+          find . -maxdepth 3 -name "*.bin" -exec cp -v {} firmware_binaries/ \; || true
+          cp -v *.log firmware_binaries/ || true
+          ls -la firmware_binaries/
+
       - name: Summary & Logs
         if: always()
         run: |
@@ -61,7 +70,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: sofle-choc-firmware
-          path: |
-            *.hex
-            .build/*.hex
-            *.log
+          path: firmware_binaries/*
