@@ -3,12 +3,13 @@
 #pragma once
 
 /****** Main Build Configuration */
-/* To save flash the build for left and right sides
- * are different! Therefore we need to specify what
- * side we want to compile here
+/* When neither IS_LEFT nor IS_RIGHT is defined, the firmware
+ * dynamically detects master/slave using is_keyboard_left().
+ * If separate builds are desired to minimize flash:
+ * define IS_LEFT for left half or IS_RIGHT for right half.
  */
 //#define IS_LEFT                                     // We want to build the LEFT side
-#define IS_RIGHT                                    // We want to build the RIGHT side
+//#define IS_RIGHT                                    // We want to build the RIGHT side
 #define MASTER_LEFT                                 // Left is the master
 
 /****** Split Configuration */

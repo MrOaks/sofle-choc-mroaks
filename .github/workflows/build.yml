@@ -32,16 +32,23 @@ jobs:
         run: |
           mkdir -p keyboards/sofle_choc_mroaks
           cp -r my_keyboard/keyboards/sofle_choc_mroaks/* keyboards/sofle_choc_mroaks/
+          mkdir -p keyboards/sofle_choc
+          cp -r my_keyboard/keyboards/sofle_choc_mroaks/* keyboards/sofle_choc/
 
       - name: Build mroaks keymap
         run: |
           qmk compile -kb sofle_choc_mroaks -km mroaks -v
+
+      - name: Build default keymap
+        run: |
+          qmk compile -kb sofle_choc_mroaks -km default -v || echo "Default keymap build skipped"
 
       - name: Build army keymap
         run: |
           qmk compile -kb sofle_choc_mroaks -km army -v || echo "Army keymap build skipped"
 
       - name: Archive Firmware Artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: sofle-choc-firmware
