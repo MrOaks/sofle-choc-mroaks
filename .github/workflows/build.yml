@@ -28,8 +28,10 @@ jobs:
         with:
           path: my_keyboard
 
-      - name: Copy Keyboard Definition into QMK
+      - name: Setup Keyboard in QMK
         run: |
+          git config --global --add safe.directory '*'
+          qmk config user.qmk_home=$(pwd)
           mkdir -p keyboards/sofle_choc_mroaks
           cp -r my_keyboard/keyboards/sofle_choc_mroaks/* keyboards/sofle_choc_mroaks/
           mkdir -p keyboards/sofle_choc
@@ -37,15 +39,22 @@ jobs:
 
       - name: Build mroaks keymap
         run: |
-          qmk compile -kb sofle_choc_mroaks -km mroaks -v
+          make sofle_choc:mroaks 2>&1 | tee build_mroaks.log
 
       - name: Build default keymap
         run: |
-          qmk compile -kb sofle_choc_mroaks -km default -v || echo "Default keymap build skipped"
+          make sofle_choc:default 2>&1 | tee build_default.log || echo "Default build skipped"
 
-      - name: Build army keymap
+      - name: Summary & Logs
+        if: always()
         run: |
-          qmk compile -kb sofle_choc_mroaks -km army -v || echo "Army keymap build skipped"
+          echo "### QMK Build Summary" >> $GITHUB_STEP_SUMMARY
+          if [ -f build_mroaks.log ]; then
+            echo "#### mroaks Keymap Log" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            tail -n 60 build_mroaks.log >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+          fi
 
       - name: Archive Firmware Artifacts
         if: always()
@@ -55,3 +64,4 @@ jobs:
           path: |
             *.hex
             .build/*.hex
+            *.log

@@ -1,5 +1,5 @@
 {
-    "keyboard_name": "Sofle Choc Mr. Oaks",
+    "keyboard_name": "Sofle Choc",
     "manufacturer": "Mr. Oaks",
     "url": "https://github.com/MrOaks/sofle-choc-mroaks",
     "maintainer": "Mr. Oaks",
@@ -30,25 +30,7 @@
         ]
     },
     "split": {
-        "enabled": true,
-        "serial": {
-            "pin": "D2"
-        },
-        "transport": {
-            "sync": {
-                "matrix_state": true
-            }
-        },
-        "encoder": {
-            "right": {
-                "rotary": [
-                    { "pin_a": "F4", "pin_b": "F5" }
-                ]
-            }
-        }
-    },
-    "ws2812": {
-        "pin": "D3"
+        "enabled": true
     },
     "processor": "atmega32u4",
     "bootloader": "caterina"

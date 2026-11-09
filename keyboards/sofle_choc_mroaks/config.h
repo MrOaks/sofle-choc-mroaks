@@ -31,8 +31,8 @@
 #define MASTER_LEFT                                 // Left is the master
 
 /****** Split Configuration */
-#define SPLIT_WPM_ENABLE                            // Sync WPM state between sides (for NEKO)
-//#define SOFT_SERIAL_PIN D2                          // Serial connection
+#define SPLIT_WPM_ENABLE                            // Sync WPM state between sides (for LUNA)
+#define SOFT_SERIAL_PIN D2                          // Serial connection
 #define SPLIT_LAYER_STATE_ENABLE                    // For layer-dependend key LEDs
 
 /****** Features: Tapping */
@@ -47,11 +47,11 @@
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD              // Turn on on left+right shift
 
 /****** Hardware: Encoder */
-//#define ENCODERS_PAD_A { F5 }
-//#define ENCODERS_PAD_B { F4 }
-//#define ENCODERS_PAD_A_RIGHT { F4 }
-//#define ENCODERS_PAD_B_RIGHT { F5 }
-//#define ENCODER_RESOLUTION 2
+#define ENCODERS_PAD_A { F5 }
+#define ENCODERS_PAD_B { F4 }
+#define ENCODERS_PAD_A_RIGHT { F4 }
+#define ENCODERS_PAD_B_RIGHT { F5 }
+#define ENCODER_RESOLUTION 2
 
 /****** Hardware: Key Matrix */
 #define MATRIX_ROWS 10
