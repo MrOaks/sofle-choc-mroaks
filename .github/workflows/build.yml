@@ -11,45 +11,40 @@ jobs:
   build:
     name: Build Firmware
     runs-on: ubuntu-latest
-    container: ghcr.io/qmk/qmk_cli:latest
+    container: ghcr.io/qmk/qmk_cli
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
+      - name: Disable git safe directory checks
+        run: git config --global --add safe.directory '*'
 
       - name: Checkout QMK Firmware
         uses: actions/checkout@v4
         with:
           repository: qmk/qmk_firmware
-          ref: master
-          path: qmk_firmware
           submodules: recursive
 
-      - name: Install Dependencies
-        run: |
-          pip install -r qmk_firmware/requirements.txt
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          path: my_keyboard
 
       - name: Copy Keyboard Definition into QMK
         run: |
-          mkdir -p qmk_firmware/keyboards/sofle_choc_mroaks
-          cp -r keyboards/sofle_choc_mroaks/* qmk_firmware/keyboards/sofle_choc_mroaks/
+          mkdir -p keyboards/sofle_choc_mroaks
+          cp -r my_keyboard/keyboards/sofle_choc_mroaks/* keyboards/sofle_choc_mroaks/
 
       - name: Build mroaks keymap
         run: |
-          cd qmk_firmware
-          qmk compile -kb sofle_choc_mroaks -km mroaks
+          qmk compile -kb sofle_choc_mroaks -km mroaks -v
 
       - name: Build army keymap
         run: |
-          cd qmk_firmware
-          qmk compile -kb sofle_choc_mroaks -km army || echo "Army build finished"
+          qmk compile -kb sofle_choc_mroaks -km army -v || echo "Army keymap build skipped"
 
       - name: Archive Firmware Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: sofle-choc-firmware
           path: |
-            qmk_firmware/*.hex
-            qmk_firmware/.build/*.hex
+            *.hex
+            .build/*.hex

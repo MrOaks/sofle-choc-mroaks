@@ -1,22 +1,18 @@
-MCU = atmega32u4				# MCU name
-#BOOTLOADER = atmel-dfu			# Bootloader selection
+MCU = atmega32u4
+BOOTLOADER = caterina
 
-#LTO_ENABLE = yes				# Link time optimisation
-#SPLIT_KEYBOARD = yes			# Its a split keyboard
+LTO_ENABLE = yes
+SPLIT_KEYBOARD = yes
 
-# Sofles Features
-#ENCODER_ENABLE = yes			# Rotary encoders
+# Sofle Features
+ENCODER_ENABLE = yes
 ENCODER_MAP_ENABLE = yes
-#OLED_ENABLE = yes				# OLED support
-OLED_DRIVER = ssd1306			# OLED Driver
+OLED_ENABLE = yes
+OLED_DRIVER = ssd1306
 
 # Optional Features
-#MOUSEKEY_ENABLE = no			# mousekeys (Warning: Needs lots of flash)
-#EXTRAKEY_ENABLE = yes			# Audio/Systemcontrol keys
-CONSOLE_ENABLE = no				# No debug console
-TAP_DANCE_ENABLE = yes			# Tap dancing
-WPM_ENABLE = yes				# WPM calculator
-#RGBLIGHT_ENABLE = no
-#RGB_MATRIX_ENABLE = yes		# RGB Matrix LEDs
-#RGB_MATRIX_DRIVER = ws2812
-#CAPS_WORD_ENABLE = yes			# Enable build in caps-word
+CONSOLE_ENABLE = no
+TAP_DANCE_ENABLE = yes
+WPM_ENABLE = yes
+CAPS_WORD_ENABLE = yes
+EXTRAKEY_ENABLE = yes
