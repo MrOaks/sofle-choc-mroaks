@@ -44,11 +44,11 @@ sofle-choc-mroaks/
 
 ## Keymaps Included
 
-### 1. `mroaks`
-- Extended layers (`_QWERTY`, `_LOWER`, `_RAISE`, `_ADJUST`).
-- **Luna the Dog** OLED pet responding dynamically to WPM speed and Caps Lock state.
-- Tap Dance shortcuts for punctuation, brackets, and Caps Lock.
-- Dynamic RGB layer lighting (Red for Lower, Blue for Raise, Green for Adjust).
+### 1. `mroaks` (Split Architecture)
+Dado que el teclado Sofle es dividido, la compilación genera firmwares dedicados para cada mitad:
+- **Mitad Izquierda (`mroaks_left`)**: Compila `sofle_choc_mroaks_left.hex` optimizado para la pantalla izquierda (estado de capas `_QWERTY`/`_LOWER`/`_RAISE`/`_ADJUST`, candados Num/Caps/Scroll, modificadores y registro de teclas).
+- **Mitad Derecha (`mroaks_right`)**: Compila `sofle_choc_mroaks_right.hex` optimizado para la pantalla derecha (Logo personalizado Mr. Oaks, contador WPM a tiempo real y la mascota **Luna the Dog** con todas sus animaciones reactivas).
+- **Unificado (`mroaks`)**: Compila `sofle_choc_mroaks.hex` con autodetección dinámica de mitad.
 
 ### 2. `army`
 - Tailored productivity and macro layout (`MACRO1`, `MACRO2`).
@@ -102,14 +102,27 @@ qmk compile -kb sofle_choc_mroaks -km army
 
 ## Flashing Instructions
 
-1. Connect the left half of the keyboard to your PC via USB.
-2. Put the controller into bootloader mode by pressing the **Reset** button twice quickly.
-3. Flash the generated `.hex` using **QMK Toolbox** or via CLI:
-   ```bash
-   qmk flash -kb sofle_choc_mroaks -km mroaks
-   ```
-4. Disconnect the left half, connect the right half, and repeat steps 2 and 3.
-5. Reconnect via TRRS cable (always connect/disconnect TRRS while unplugged from USB).
+1. **Mitad Izquierda**:
+   - Conecta la mitad izquierda del teclado a tu PC mediante USB (sin el cable TRRS conectado).
+   - Pon el controlador en modo bootloader pulsando el botón de **Reset** dos veces seguidas.
+   - Flashea el archivo **`sofle_choc_mroaks_left.hex`** usando **QMK Toolbox** o por línea de comandos:
+     ```bash
+     qmk flash -kb sofle_choc_mroaks -km mroaks_left
+     ```
+   - Desconecta la mitad izquierda.
+
+2. **Mitad Derecha**:
+   - Conecta la mitad derecha del teclado a tu PC mediante USB.
+   - Pulsa el botón de **Reset** dos veces seguidas para entrar en modo bootloader.
+   - Flashea el archivo **`sofle_choc_mroaks_right.hex`**:
+     ```bash
+     qmk flash -kb sofle_choc_mroaks -km mroaks_right
+     ```
+   - Desconecta la mitad derecha.
+
+3. **Conexión final**:
+   - Con ambos lados desconectados del USB, conecta el cable TRRS entre las dos mitades.
+   - Conecta el cable USB a la mitad izquierda (maestra). Ambas mitades se encenderán mostrando el estado en la izquierda y la mascota Luna en la derecha.
 
 ---
 

@@ -1,0 +1,22 @@
+MCU = atmega32u4
+BOOTLOADER = caterina
+
+LTO_ENABLE = yes
+SPLIT_KEYBOARD = yes
+
+# Sofle Features
+ENCODER_ENABLE = yes
+ENCODER_MAP_ENABLE = yes
+OLED_ENABLE = yes
+OLED_DRIVER = ssd1306
+
+# RGB Matrix
+RGB_MATRIX_ENABLE = yes
+RGB_MATRIX_DRIVER = ws2812
+
+# Optional Features
+CONSOLE_ENABLE = no
+TAP_DANCE_ENABLE = yes
+WPM_ENABLE = yes
+CAPS_WORD_ENABLE = yes
+EXTRAKEY_ENABLE = yes

@@ -37,9 +37,17 @@ jobs:
           mkdir -p keyboards/sofle_choc
           cp -r my_keyboard/keyboards/sofle_choc_mroaks/* keyboards/sofle_choc/
 
-      - name: Build mroaks keymap
+      - name: Build mroaks Left side
         run: |
-          make sofle_choc:mroaks 2>&1 | tee build_mroaks.log
+          make sofle_choc:mroaks_left 2>&1 | tee build_mroaks_left.log
+
+      - name: Build mroaks Right side
+        run: |
+          make sofle_choc:mroaks_right 2>&1 | tee build_mroaks_right.log
+
+      - name: Build mroaks Unified
+        run: |
+          make sofle_choc:mroaks 2>&1 | tee build_mroaks_unified.log
 
       - name: Build default keymap
         run: |
@@ -58,12 +66,10 @@ jobs:
         if: always()
         run: |
           echo "### QMK Build Summary" >> $GITHUB_STEP_SUMMARY
-          if [ -f build_mroaks.log ]; then
-            echo "#### mroaks Keymap Log" >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
-            tail -n 60 build_mroaks.log >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
-          fi
+          echo "Firmware compilation completed for split keyboard:" >> $GITHUB_STEP_SUMMARY
+          echo "- **Left Half:** \`sofle_choc_mroaks_left.hex\` (Layer status, Lock status, Modifiers, Keylogger)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Right Half:** \`sofle_choc_mroaks_right.hex\` (Mr. Oaks Logo, WPM counter, Luna the Dog animation)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Unified:** \`sofle_choc_mroaks.hex\` (Dynamic autodetection)" >> $GITHUB_STEP_SUMMARY
 
       - name: Archive Firmware Artifacts
         if: always()
