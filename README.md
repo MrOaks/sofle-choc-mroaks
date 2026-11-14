@@ -49,6 +49,16 @@ sofle-choc-mroaks/
 
 ---
 
+## Keycaps Configuration & Layout
+
+Configuración y distribución física de teclas del teclado:
+
+![Configuración de Keycaps - Sofle Choc Mr. Oaks](docs/keycapsConfiguration.png)
+
+> Para consultar el contraste detallado entre la disposición física y las asignaciones del firmware, revisa el [Registro de Correcciones en Keymap](docs/correcciones_keymap.md).
+
+---
+
 ## Keymaps Included
 
 ### 1. `mroaks` (Split Architecture)
