@@ -182,4 +182,4 @@ El repositorio incluye el código fuente completo optimizado en [`keyboards/sofl
 3. **Uso habitual:**
    * Conecta el cable TRRS entre las dos mitades.
    * Conecta el cable USB a la **mitad izquierda** (maestra).
-   * La pantalla izquierda mostrará las capas y pulsaciones, y la pantalla derecha mostrará el logo de Mr. Oaks, el velocímetro WPM y la mascota interactiva **Luna the Dog**.
+   * La pantalla izquierda mostrará las capas y pulsaciones, y la pantalla derecha mostrará el logo de Mr. Oaks, el velocímetro WPM y la mascota interactiva **Ikki the Dog**.

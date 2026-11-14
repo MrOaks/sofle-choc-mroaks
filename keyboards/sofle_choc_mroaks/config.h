@@ -31,7 +31,7 @@
 #define MASTER_LEFT                                 // Left is the master
 
 /****** Split Configuration */
-#define SPLIT_WPM_ENABLE                            // Sync WPM state between sides (for LUNA)
+#define SPLIT_WPM_ENABLE                            // Sync WPM state between sides (for IKKI)
 #define SOFT_SERIAL_PIN D2                          // Serial connection
 #define SPLIT_LAYER_STATE_ENABLE                    // For layer-dependend key LEDs
 

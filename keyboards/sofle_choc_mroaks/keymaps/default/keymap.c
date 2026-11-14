@@ -503,7 +503,7 @@ led_t led_usb_state;
 // bool showedJump = true;
 #ifdef WPM_ENABLE
 /* logic */
-static void render_luna(int LUNA_X, int LUNA_Y) {
+static void render_ikki(int IKKI_X, int IKKI_Y) {
     /* Sit */
     static const char PROGMEM sit[2][ANIM_SIZE] = {
       /* 'sit1', 32x22px */
@@ -557,22 +557,22 @@ static void render_luna(int LUNA_X, int LUNA_Y) {
                                                      }};
 
     /* animation */
-    void animate_luna(void) {
+    void animate_ikki(void) {
         /* jump */
         if (isJumping || !showedJump) {
             /* clear */
-            oled_set_cursor(LUNA_X, LUNA_Y + 2);
+            oled_set_cursor(IKKI_X, IKKI_Y + 2);
             oled_write("     ", false);
 
-            oled_set_cursor(LUNA_X, LUNA_Y - 1);
+            oled_set_cursor(IKKI_X, IKKI_Y - 1);
 
             showedJump = true;
         } else {
             /* clear */
-            oled_set_cursor(LUNA_X, LUNA_Y - 1);
+            oled_set_cursor(IKKI_X, IKKI_Y - 1);
             oled_write("     ", false);
 
-            oled_set_cursor(LUNA_X, LUNA_Y);
+            oled_set_cursor(IKKI_X, IKKI_Y);
         }
 
         /* switch frame */
@@ -609,7 +609,7 @@ static void render_luna(int LUNA_X, int LUNA_Y) {
     /* animation timer */
     if (timer_elapsed32(anim_timer) > ANIM_FRAME_DURATION) {
         anim_timer = timer_read32();
-        animate_luna();
+        animate_ikki();
     }
 }
 
@@ -674,7 +674,7 @@ static void print_right(void) {
     } else {
       oled_write_ln_P(PSTR("     "), false);
     }
-    render_luna(0, 11);
+    render_ikki(0, 11);
     //render_neko(0, 10);
 #endif  // WPM_ENABLE
   } // is_oled_on

@@ -437,7 +437,7 @@ static void print_left(void) {
   }
 }
 
-/* KEYBOARD PET START (Luna the Dog) */
+/* KEYBOARD PET START (Ikki the Dog) */
 
 #ifdef WPM_ENABLE
 
@@ -451,7 +451,7 @@ static uint8_t  current_frame = 0;
 static int      current_wpm = 0;
 static led_t    led_usb_state;
 
-static void render_luna(int LUNA_X, int LUNA_Y) {
+static void render_ikki(int IKKI_X, int IKKI_Y) {
     /* Sit */
     static const char PROGMEM sit[2][ANIM_SIZE] = {
       /* 'sit1', 32x22px */
@@ -492,16 +492,16 @@ static void render_luna(int LUNA_X, int LUNA_Y) {
       {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x40, 0x40, 0x40, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0xa0, 0x20, 0x40, 0x80, 0xc0, 0x20, 0x40, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3e, 0x41, 0xf0, 0x04, 0x02, 0x02, 0x02, 0x03, 0x02, 0x02, 0x02, 0x04, 0x04, 0x02, 0x01, 0x00, 0x00, 0x00, 0x04, 0x00, 0x40, 0x40, 0x55, 0x82, 0x7c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3f, 0x20, 0x30, 0x0c, 0x02, 0x05, 0x09, 0x12, 0x1e, 0x04, 0x18, 0x10, 0x08, 0x10, 0x20, 0x28, 0x34, 0x06, 0x02, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00}
     };
 
-    void animate_luna(void) {
+    void animate_ikki(void) {
         if (isJumping || !showedJump) {
-            oled_set_cursor(LUNA_X, LUNA_Y + 2);
+            oled_set_cursor(IKKI_X, IKKI_Y + 2);
             oled_write("     ", false);
-            oled_set_cursor(LUNA_X, LUNA_Y - 1);
+            oled_set_cursor(IKKI_X, IKKI_Y - 1);
             showedJump = true;
         } else {
-            oled_set_cursor(LUNA_X, LUNA_Y - 1);
+            oled_set_cursor(IKKI_X, IKKI_Y - 1);
             oled_write("     ", false);
-            oled_set_cursor(LUNA_X, LUNA_Y);
+            oled_set_cursor(IKKI_X, IKKI_Y);
         }
 
         current_frame = (current_frame + 1) % 2;
@@ -532,7 +532,7 @@ static void render_luna(int LUNA_X, int LUNA_Y) {
 
     if (timer_elapsed32(anim_timer) > ANIM_FRAME_DURATION) {
         anim_timer = timer_read32();
-        animate_luna();
+        animate_ikki();
     }
 }
 
@@ -591,7 +591,7 @@ static void print_right(void) {
     } else {
       oled_write_ln_P(PSTR("     "), false);
     }
-    render_luna(0, 11);
+    render_ikki(0, 11);
 #endif  // WPM_ENABLE
   }
 }

@@ -68,7 +68,7 @@ jobs:
           echo "### QMK Build Summary" >> $GITHUB_STEP_SUMMARY
           echo "Firmware compilation completed for split keyboard:" >> $GITHUB_STEP_SUMMARY
           echo "- **Left Half:** \`sofle_choc_mroaks_left.hex\` (Layer status, Lock status, Modifiers, Keylogger)" >> $GITHUB_STEP_SUMMARY
-          echo "- **Right Half:** \`sofle_choc_mroaks_right.hex\` (Mr. Oaks Logo, WPM counter, Luna the Dog animation)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Right Half:** \`sofle_choc_mroaks_right.hex\` (Mr. Oaks Logo, WPM counter, Ikki the Dog animation)" >> $GITHUB_STEP_SUMMARY
           echo "- **Unified:** \`sofle_choc_mroaks.hex\` (Dynamic autodetection)" >> $GITHUB_STEP_SUMMARY
 
       - name: Archive Firmware Artifacts

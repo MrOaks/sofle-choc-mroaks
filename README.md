@@ -10,7 +10,7 @@ Custom QMK firmware, keymaps, and hardware manufacturing files for the **Sofle C
 - **Switches**: Low-profile Kailh Choc switches with hotswap sockets.
 - **Controllers**: ProMicro USB-C (ATmega32u4, 5V / 16MHz) communicating via TRRS serial link.
 - **Rotary Encoders**: Dual EC11 rotary encoders with aluminum knobs for volume, media control, and scrolling.
-- **OLED Displays**: SSD1306 128x32 OLED screens featuring **Luna the dog** keyboard pet (WPM-reactive animations: sit, walk, run, bark on Caps Lock, sneak), Mr. Oaks custom logos, and layer indicators.
+- **OLED Displays**: SSD1306 128x32 OLED screens featuring **Ikki the dog** keyboard pet (WPM-reactive animations: sit, walk, run, bark on Caps Lock, sneak), Mr. Oaks custom logos, and layer indicators.
 - **Per-Key RGB**: RGB Matrix powered by SK6812 Mini-E LEDs with layer-specific indicator colors.
 - **Automated Cloud CI**: GitHub Actions workflow that automatically compiles `.hex` firmware binaries on every push.
 
@@ -31,7 +31,7 @@ sofle-choc-mroaks/
 │   ├── sofle_choc.c
 │   ├── lib/                    # OLED fonts (font.c, glcdfont.c)
 │   └── keymaps/
-│       ├── mroaks/             # Main keymap (Luna the dog animation, tap dance, layer RGB)
+│       ├── mroaks/             # Main keymap (Ikki the dog animation, tap dance, layer RGB)
 │       ├── army/               # Productivity layout with dedicated macros
 │       └── default/            # Reference layout
 ├── hardware/
@@ -64,7 +64,7 @@ Configuración y distribución física de teclas del teclado:
 ### 1. `mroaks` (Split Architecture)
 Dado que el teclado Sofle es dividido, la compilación genera firmwares dedicados para cada mitad:
 - **Mitad Izquierda (`mroaks_left`)**: Compila `sofle_choc_mroaks_left.hex` optimizado para la pantalla izquierda (estado de capas `_QWERTY`/`_LOWER`/`_RAISE`/`_ADJUST`, candados Num/Caps/Scroll, modificadores y registro de teclas).
-- **Mitad Derecha (`mroaks_right`)**: Compila `sofle_choc_mroaks_right.hex` optimizado para la pantalla derecha (Logo personalizado Mr. Oaks, contador WPM a tiempo real y la mascota **Luna the Dog** con todas sus animaciones reactivas).
+- **Mitad Derecha (`mroaks_right`)**: Compila `sofle_choc_mroaks_right.hex` optimizado para la pantalla derecha (Logo personalizado Mr. Oaks, contador WPM a tiempo real y la mascota **Ikki the Dog** con todas sus animaciones reactivas).
 - **Unificado (`mroaks`)**: Compila `sofle_choc_mroaks.hex` con autodetección dinámica de mitad.
 
 ### 2. `army`
@@ -145,7 +145,7 @@ qmk compile -kb sofle_choc_mroaks -km army
 
 3. **Conexión final**:
    - Con ambos lados desconectados del USB, conecta el cable TRRS entre las dos mitades.
-   - Conecta el cable USB a la mitad izquierda (maestra). Ambas mitades se encenderán mostrando el estado en la izquierda y la mascota Luna en la derecha.
+   - Conecta el cable USB a la mitad izquierda (maestra). Ambas mitades se encenderán mostrando el estado en la izquierda y la mascota Ikki en la derecha.
 
 ---
 
