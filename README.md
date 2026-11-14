@@ -41,6 +41,7 @@ sofle-choc-mroaks/
 │   └── 3d_print/               # STL 3D models (cases, foam templates, CAD models)
 └── docs/
     ├── build_guide_choc.md     # Guía detallada paso a paso de ensamblaje, soldadura y puesta en marcha
+    ├── correcciones_keymap.md  # Registro de discrepancias detectadas y correcciones pendientes en keymap
     ├── keycapsConfiguration.png# Diagrama visual de referencia de teclas y distribución
     ├── logos/                  # Mr. Oaks logos (high-res and 32px OLED-ready bitmaps)
     └── pantallas-oled/         # OLED display documentation and references
