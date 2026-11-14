@@ -33,6 +33,8 @@ sofle-choc-mroaks/
 │       ├── army/               # Productivity layout with dedicated macros
 │       └── default/            # Reference layout
 ├── hardware/
+│   ├── pcb/                    # KiCad PCB schematics, layouts, and footprint libraries
+│   ├── gerbers/                # Production-ready Gerber archives (PCB & top plate)
 │   ├── cnc/                    # DXF drawings and G-code for milling custom wood cases
 │   └── 3d_print/               # STL 3D models (cases, foam templates, CAD models)
 └── docs/
@@ -61,6 +63,12 @@ Dado que el teclado Sofle es dividido, la compilación genera firmwares dedicado
 ---
 
 ## Hardware & Cases
+
+### PCB Design & Gerbers (`hardware/pcb/`, `hardware/gerbers/`)
+- `hardware/pcb/SofleKeyboard.kicad_pcb` & `SofleKeyboard.sch`: Complete KiCad project for Sofle Choc v2.1 with Kailh Choc hotswap sockets, TRRS jack, and SK6812 RGB.
+- `hardware/pcb/top_plate/`: KiCad project for manufacturing the FR4 switch top plate.
+- `hardware/gerbers/gerber-choc-pcb-v2.1.zip`: Production-ready Gerber archive for JLCPCB/PCBWay (main PCB).
+- `hardware/gerbers/gerber-choc-top-v2.1.1.zip`: Production-ready Gerber archive for JLCPCB/PCBWay (top plate).
 
 ### CNC Wood Cases (`hardware/cnc/`)
 Contains vector files (`.dxf`) and ready-to-run toolpaths (`.gcode`) to machine solid wooden cases for both halves on a CNC router:
