@@ -715,11 +715,8 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
   uint8_t layer = get_highest_layer(layer_state);
   if (layer > 0) {
-    // Target color for key and downlight leds
+    // Target color for key indicator leds
     RGB ledcol[] = { {RGB_BLACK}, {RGB_RED}, {RGB_BLUE}, {RGB_GREEN} } ;
-
-    // Set the indicator LEDs
-    rgb_matrix_set_color(0, ledcol[layer].g>>2, ledcol[layer].r>>2, ledcol[layer].b>>2);
 
     for (uint8_t row = 0; row < MATRIX_ROWS; ++row) {
       for (uint8_t col = 0; col < MATRIX_COLS; ++col) {
@@ -732,8 +729,6 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         }
       }
     }
-  } else {
-    rgb_matrix_set_color(0, RGB_OFF);
   }
   return false;
 }

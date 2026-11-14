@@ -313,11 +313,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
   uint8_t layer = get_highest_layer(layer_state);
   if (layer > 0) {
-    // Target color for key and downlight leds
+    // Target color for key indicator leds
     RGB ledcol[] = { {RGB_BLACK}, {RGB_RED}, {RGB_BLUE}, {RGB_GREEN} } ;
-
-    // Set the indicator LEDs
-    rgb_matrix_set_color(0, ledcol[layer].g>>2, ledcol[layer].r>>2, ledcol[layer].b>>2);
 
     for (uint8_t row = 0; row < MATRIX_ROWS; ++row) {
       for (uint8_t col = 0; col < MATRIX_COLS; ++col) {
@@ -326,14 +323,11 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
           // Keys with special functions
           uint_fast16_t const key = keymap_key_to_keycode(layer, (keypos_t){col, row});
           if (index != NO_LED && key != KC_TRNS) {
-          //if (index != NO_LED && keymap_key_to_keycode(layer, (keypos_t){col,row}) > KC_TRNS) {
             rgb_matrix_set_color(index, ledcol[layer].g, ledcol[layer].r, ledcol[layer].b);
           }
         }
       }
     }
-  } else {
-    rgb_matrix_set_color(0, RGB_OFF);
   }
   return false;
 }

@@ -76,7 +76,7 @@
 #define RGB_MATRIX_SPD_STEP 10
 #define RGB_MATRIX_KEYPRESSES                       // Reacts to keypresses
 #define RGB_MATRIX_FRAMEBUFFER_EFFECTS              // Enable framebuffer effects
-//#define RGB_MATRIX_SPLIT { 29, 29 }                 // 29 LEDs on each side
+#define RGB_MATRIX_SPLIT { 29, 29 }                 // 29 LEDs on each side
 //#define SPLIT_TRANSPORT_MIRROR                      // Mirror master to slave
 #define RGB_MATRIX_SLEEP                            // Turn off when suspended
 
