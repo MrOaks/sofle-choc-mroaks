@@ -23,6 +23,41 @@
 
 #include QMK_KEYBOARD_H
 
+/**************************************************** RGB MATRIX KEYCODE ALIASES */
+#ifndef RGB_TOG
+#    define RGB_TOG RM_TOGG
+#endif
+#ifndef RGB_MOD
+#    define RGB_MOD RM_NEXT
+#endif
+#ifndef RGB_RMOD
+#    define RGB_RMOD RM_PREV
+#endif
+#ifndef RGB_HUI
+#    define RGB_HUI RM_HUEU
+#endif
+#ifndef RGB_HUD
+#    define RGB_HUD RM_HUED
+#endif
+#ifndef RGB_SAI
+#    define RGB_SAI RM_SATU
+#endif
+#ifndef RGB_SAD
+#    define RGB_SAD RM_SATD
+#endif
+#ifndef RGB_VAI
+#    define RGB_VAI RM_VALU
+#endif
+#ifndef RGB_VAD
+#    define RGB_VAD RM_VALD
+#endif
+#ifndef RGB_SPI
+#    define RGB_SPI RM_SPDU
+#endif
+#ifndef RGB_SPD
+#    define RGB_SPD RM_SPDD
+#endif
+
 #define LOGO_TIMEOUT        2000          // Timeout for the logo display
 #define MIN_WALK_SPEED      10            // WPM Threshold for walk anim
 #define MIN_RUN_SPEED       40            // WPM Threshold for run anim
