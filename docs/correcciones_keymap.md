@@ -1,47 +1,32 @@
-# Registro de Discrepancias y Correcciones Pendientes en Keymap
+# Registro de Discrepancias y Correcciones en Keymap
 
 Documento de contraste entre la disposición física real de keycaps ([`docs/keycapsConfiguration.png`](keycapsConfiguration.png)) y el código del firmware en [`keyboards/sofle_choc_mroaks/keymaps/mroaks/keymap.c`](../keyboards/sofle_choc_mroaks/keymaps/mroaks/keymap.c).
 
 ---
 
-## 1. Discrepancias Críticas Identificadas
+## 1. Discrepancias Corregidas en el Firmware
 
-### 🔴 1. Pulgar Izquierdo: Tecla exterior (`Code`)
+### ✅ 1. Pulgar Izquierdo: Tecla exterior (`Code`) — CORREGIDO
 * **Ubicación en matriz:** `L40` (primera tecla del cluster de pulgar izquierdo, fila 77 de `keymap.c`).
 * **Keycap física en foto:** **`Code`**
-* **Código actual:** `KC_SCLN`
-* **Comentario original en diagrama ASCII (línea 68):** `LCTRL`
-* **Comportamiento en Windows (ES):** Al pulsar con el pulgar la tecla `Code`, el teclado escribe la letra **`ñ`** (o punto y coma `;`), en lugar de actuar como tecla modificadora.
-* **Corrección propuesta:**
-  ```c
-  // Reemplazar KC_SCLN por KC_LCTL en la posición L40:
-  KC_LCTL, KC_LALT, KC_LGUI, LOWER, KC_ENT, ...
-  ```
+* **Código anterior:** `KC_SCLN` (escribía la letra `ñ` con el pulgar)
+* **Código corregido:** **`KC_LCTL`** (Control izquierdo, coincidiendo con el diagrama ASCII original).
 
 ---
 
-### 🔴 2. Pulgar Derecho: Cuarta tecla (`Ctrl`)
+### ✅ 2. Pulgar Derecho: Cuarta tecla (`Ctrl`) — CORREGIDO
 * **Ubicación en matriz:** `R44` (cuarta tecla del cluster de pulgar derecho, fila 77 de `keymap.c`).
 * **Keycap física en foto:** **`Ctrl`**
-* **Código actual:** `KC_RGUI` (tecla Windows / Command derecha)
-* **Comportamiento en Windows:** Al pulsar la tecla marcada como `Ctrl`, el sistema abre el menú de inicio de Windows en lugar de enviar la señal de Control.
-* **Corrección propuesta:**
-  ```c
-  // Reemplazar KC_RGUI por KC_RCTL en la posición R44:
-  ... KC_SPC, RAISE, KC_RALT, KC_RCTL, KC_DEL
-  ```
+* **Código anterior:** `KC_RGUI` (abría el menú de inicio de Windows en vez de actuar como Control)
+* **Código corregido:** **`KC_RCTL`** (Control derecho).
 
 ---
 
-### 🟡 3. Mano Derecha: Tecla al lado de la `P` (`| \`)
+### ℹ️ 3. Mano Derecha: Tecla al lado de la `P` (`| \` / `< >`)
 * **Ubicación en matriz:** `R15` (fila superior de letras, extremo derecho, fila 74 de `keymap.c`).
-* **Keycap física en foto:** **`| \`** (Pleca / Barra vertical y Barra invertida)
-* **Código actual:** `KC_NUBS` (Non-US Backslash)
-* **Comportamiento en Windows (ES):** En la configuración de idioma Español (España), el código `KC_NUBS` escribe los caracteres menor y mayor (**`<`** y **`>`**).
-* **Opciones de corrección:**
-  * **Opción A (Mantener la función `<` y `>`):** Si conscientemente se colocó ahí la keycap `| \` para tener acceso a `<` y `>`, no se modifica el código (solo se documenta).
-  * **Opción B (Comportamiento estándar español `'` y `?`):** En teclados ISO españoles, esa posición física (al lado de la P) suele llevar acentos o signos de interrogación (`KC_MINS`).
-  * **Opción C (Enviar directamente `\` y `|`):** Si se desea que emita los símbolos impresos en la tecla independientemente del idioma del sistema operativo.
+* **Keycap física en foto:** **`| \`**
+* **Código actual:** **`KC_NUBS`** (Non-US Backslash)
+* **Comportamiento en Windows (ES):** Escribe los caracteres menor y mayor (**`<`** y **`>`**). Se mantiene así de forma intencionada ya que en el layout del Sofle no existe la tecla estándar al lado de la Z para escribir `<` y `>`, garantizando acceso directo a estos símbolos esenciales de programación.
 
 ---
 
