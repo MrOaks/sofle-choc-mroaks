@@ -416,7 +416,7 @@ void render_status_main(void) {
   }
 }
 
-static void print_left(void) {
+__attribute__((unused)) static void print_left(void) {
   // OLED Sleep Mode
   if (get_current_wpm() > 0) {
     oled_on();
@@ -445,7 +445,7 @@ static uint8_t  current_frame = 0;
 static int      current_wpm = 0;
 static led_t    led_usb_state;
 
-static void render_ikki(int IKKI_X, int IKKI_Y) {
+__attribute__((unused)) static void render_ikki(int IKKI_X, int IKKI_Y) {
     /* Sit */
     static const char PROGMEM sit[2][ANIM_SIZE] = {
       /* 'sit1', 32x22px */
@@ -536,7 +536,7 @@ static void render_ikki(int IKKI_X, int IKKI_Y) {
 
 extern oled_rotation_t oled_rotation;
 
-static void print_right(void) {
+__attribute__((unused)) static void print_right(void) {
   static const char PROGMEM logo[] = {
     0x00, 0xf8, 0xfc, 0xfc, 0x1c, 0x1c, 0x1c, 0x1c, 0x1c, 0x1c, 0x1c, 0x1c, 0xfc, 0xfc, 0xf8, 0x00,
     0x1c, 0x1c, 0x1c, 0x9c, 0x9c, 0xdc, 0xdc, 0xfc, 0xfc, 0xfc, 0x7c, 0x7c, 0x3c, 0x3c, 0x1c, 0x00,

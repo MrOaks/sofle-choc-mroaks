@@ -39,19 +39,19 @@ jobs:
 
       - name: Build mroaks Left side
         run: |
-          make sofle_choc:mroaks_left 2>&1 | tee build_mroaks_left.log
+          qmk compile -kb sofle_choc_mroaks -km mroaks_left 2>&1 | tee build_mroaks_left.log
 
       - name: Build mroaks Right side
         run: |
-          make sofle_choc:mroaks_right 2>&1 | tee build_mroaks_right.log
+          qmk compile -kb sofle_choc_mroaks -km mroaks_right 2>&1 | tee build_mroaks_right.log
 
       - name: Build mroaks Unified
         run: |
-          make sofle_choc:mroaks 2>&1 | tee build_mroaks_unified.log
+          qmk compile -kb sofle_choc_mroaks -km mroaks 2>&1 | tee build_mroaks_unified.log
 
       - name: Build default keymap
         run: |
-          make sofle_choc:default 2>&1 | tee build_default.log || echo "Default build skipped"
+          qmk compile -kb sofle_choc_mroaks -km default 2>&1 | tee build_default.log || echo "Default build skipped"
 
       - name: Collect Firmware Files
         if: always()
@@ -59,6 +59,9 @@ jobs:
           mkdir -p firmware_binaries
           find . -maxdepth 3 -name "*.hex" -exec cp -v {} firmware_binaries/ \; || true
           find . -maxdepth 3 -name "*.bin" -exec cp -v {} firmware_binaries/ \; || true
+          cp -v sofle_choc_mroaks_mroaks_left.hex firmware_binaries/sofle_choc_mroaks_left.hex 2>/dev/null || true
+          cp -v sofle_choc_mroaks_mroaks_right.hex firmware_binaries/sofle_choc_mroaks_right.hex 2>/dev/null || true
+          cp -v sofle_choc_mroaks_mroaks.hex firmware_binaries/sofle_choc_mroaks.hex 2>/dev/null || true
           cp -v *.log firmware_binaries/ || true
           ls -la firmware_binaries/
 

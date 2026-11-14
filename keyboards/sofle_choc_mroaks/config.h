@@ -47,10 +47,18 @@
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD              // Turn on on left+right shift
 
 /****** Hardware: Encoder */
-#define ENCODERS_PAD_A { F5 }
-#define ENCODERS_PAD_B { F4 }
-#define ENCODERS_PAD_A_RIGHT { F4 }
-#define ENCODERS_PAD_B_RIGHT { F5 }
+#ifndef ENCODER_A_PINS
+#    define ENCODER_A_PINS { F5 }
+#endif
+#ifndef ENCODER_B_PINS
+#    define ENCODER_B_PINS { F4 }
+#endif
+#ifndef ENCODER_A_PINS_RIGHT
+#    define ENCODER_A_PINS_RIGHT { F4 }
+#endif
+#ifndef ENCODER_B_PINS_RIGHT
+#    define ENCODER_B_PINS_RIGHT { F5 }
+#endif
 #define ENCODER_RESOLUTION 2
 
 /****** Hardware: Key Matrix */

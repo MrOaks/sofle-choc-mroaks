@@ -90,5 +90,8 @@
 
 #ifdef OLED_ENABLE
 #define OLED_TIMEOUT 300000                         // OLED Timeout 5min
+#ifdef OLED_FONT_H
+#undef OLED_FONT_H
+#endif
 #define OLED_FONT_H "lib/font.c"
 #endif // OLED_ENABLE
