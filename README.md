@@ -14,6 +14,8 @@ Custom QMK firmware, keymaps, and hardware manufacturing files for the **Sofle C
 - **Per-Key RGB**: RGB Matrix powered by SK6812 Mini-E LEDs with layer-specific indicator colors.
 - **Automated Cloud CI**: GitHub Actions workflow that automatically compiles `.hex` firmware binaries on every push.
 
+> 📖 **Guía de Montaje:** Para el montaje físico, soldadura de componentes paso a paso e instrucciones de ensamblaje, consulta la [Guía de Construcción Sofle Choc](docs/build_guide_choc.md).
+
 ---
 
 ## Repository Structure
@@ -38,6 +40,8 @@ sofle-choc-mroaks/
 │   ├── cnc/                    # DXF drawings and G-code for milling custom wood cases
 │   └── 3d_print/               # STL 3D models (cases, foam templates, CAD models)
 └── docs/
+    ├── build_guide_choc.md     # Guía detallada paso a paso de ensamblaje, soldadura y puesta en marcha
+    ├── keycapsConfiguration.png# Diagrama visual de referencia de teclas y distribución
     ├── logos/                  # Mr. Oaks logos (high-res and 32px OLED-ready bitmaps)
     └── pantallas-oled/         # OLED display documentation and references
 ```
