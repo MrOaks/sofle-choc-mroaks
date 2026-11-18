@@ -4,9 +4,9 @@ BOOTLOADER = caterina
 LTO_ENABLE = yes
 SPLIT_KEYBOARD = yes
 
-# VIA & EEPROM
-VIA_ENABLE = yes
-EEPROM_ENABLE = yes
+# VIA & EEPROM (Disabled on slave right half to save Flash for Ikki OLED animation)
+VIA_ENABLE = no
+EEPROM_ENABLE = no
 
 # Sofle Features
 ENCODER_ENABLE = yes
