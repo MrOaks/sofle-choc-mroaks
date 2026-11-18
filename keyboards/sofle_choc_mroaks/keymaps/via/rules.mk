@@ -4,9 +4,8 @@ BOOTLOADER = caterina
 LTO_ENABLE = yes
 SPLIT_KEYBOARD = yes
 
-# VIA & EEPROM
+# VIA & Subsystems (Fully enabled on both sides for 100% RPC symmetry)
 VIA_ENABLE = yes
-EEPROM_ENABLE = yes
 
 # Sofle Features
 ENCODER_ENABLE = yes
