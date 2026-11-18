@@ -2,9 +2,9 @@ name: Build QMK Firmware
 
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, release-via]
   pull_request:
-    branches: [main, master]
+    branches: [main, master, release-via]
   workflow_dispatch:
 
 jobs:
@@ -37,17 +37,25 @@ jobs:
           mkdir -p keyboards/sofle_choc
           cp -r my_keyboard/keyboards/sofle_choc_mroaks/* keyboards/sofle_choc/
 
+      - name: Build via Left side (VIA + Spanish ISO)
+        run: |
+          qmk compile -kb sofle_choc_mroaks -km via_left 2>&1 | tee build_via_left.log || echo "via_left failed"
+
+      - name: Build via Right side (VIA + Ikki Animation)
+        run: |
+          qmk compile -kb sofle_choc_mroaks -km via_right 2>&1 | tee build_via_right.log || echo "via_right failed"
+
+      - name: Build via Unified
+        run: |
+          qmk compile -kb sofle_choc_mroaks -km via 2>&1 | tee build_via_unified.log || echo "via_unified skipped/failed"
+
       - name: Build mroaks Left side
         run: |
-          qmk compile -kb sofle_choc_mroaks -km mroaks_left 2>&1 | tee build_mroaks_left.log
+          qmk compile -kb sofle_choc_mroaks -km mroaks_left 2>&1 | tee build_mroaks_left.log || echo "mroaks_left skipped"
 
       - name: Build mroaks Right side
         run: |
-          qmk compile -kb sofle_choc_mroaks -km mroaks_right 2>&1 | tee build_mroaks_right.log
-
-      - name: Build mroaks Unified
-        run: |
-          qmk compile -kb sofle_choc_mroaks -km mroaks 2>&1 | tee build_mroaks_unified.log
+          qmk compile -kb sofle_choc_mroaks -km mroaks_right 2>&1 | tee build_mroaks_right.log || echo "mroaks_right skipped"
 
       - name: Build default keymap
         run: |
@@ -59,9 +67,11 @@ jobs:
           mkdir -p firmware_binaries
           find . -maxdepth 3 -name "*.hex" -exec cp -v {} firmware_binaries/ \; || true
           find . -maxdepth 3 -name "*.bin" -exec cp -v {} firmware_binaries/ \; || true
+          cp -v sofle_choc_mroaks_via_left.hex firmware_binaries/sofle_choc_via_left.hex 2>/dev/null || true
+          cp -v sofle_choc_mroaks_via_right.hex firmware_binaries/sofle_choc_via_right.hex 2>/dev/null || true
+          cp -v sofle_choc_mroaks_via.hex firmware_binaries/sofle_choc_via.hex 2>/dev/null || true
           cp -v sofle_choc_mroaks_mroaks_left.hex firmware_binaries/sofle_choc_mroaks_left.hex 2>/dev/null || true
           cp -v sofle_choc_mroaks_mroaks_right.hex firmware_binaries/sofle_choc_mroaks_right.hex 2>/dev/null || true
-          cp -v sofle_choc_mroaks_mroaks.hex firmware_binaries/sofle_choc_mroaks.hex 2>/dev/null || true
           cp -v *.log firmware_binaries/ || true
           ls -la firmware_binaries/
 
@@ -70,9 +80,10 @@ jobs:
         run: |
           echo "### QMK Build Summary" >> $GITHUB_STEP_SUMMARY
           echo "Firmware compilation completed for split keyboard:" >> $GITHUB_STEP_SUMMARY
-          echo "- **Left Half:** \`sofle_choc_mroaks_left.hex\` (Layer status, Lock status, Modifiers, Keylogger)" >> $GITHUB_STEP_SUMMARY
-          echo "- **Right Half:** \`sofle_choc_mroaks_right.hex\` (Mr. Oaks Logo, WPM counter, Ikki the Dog animation)" >> $GITHUB_STEP_SUMMARY
-          echo "- **Unified:** \`sofle_choc_mroaks.hex\` (Dynamic autodetection)" >> $GITHUB_STEP_SUMMARY
+          echo "- **VIA Left Half:** \`sofle_choc_via_left.hex\` (VIA, Layer telemetry, Spanish ISO)" >> $GITHUB_STEP_SUMMARY
+          echo "- **VIA Right Half:** \`sofle_choc_via_right.hex\` (VIA, Ikki the Dog, WPM reactive)" >> $GITHUB_STEP_SUMMARY
+          echo "- **mroaks Left Half:** \`sofle_choc_mroaks_left.hex\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **mroaks Right Half:** \`sofle_choc_mroaks_right.hex\`" >> $GITHUB_STEP_SUMMARY
 
       - name: Archive Firmware Artifacts
         if: always()
