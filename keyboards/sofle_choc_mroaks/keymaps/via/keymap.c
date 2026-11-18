@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //---------+--------+--------+--------+--------+--------+--------| |--------+--------+--------+--------+--------+--------+--------|
      KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_MUTE,   KC_MPLY, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_ENT),
   //---------+--------+--------+--------+--------+--------+--------| |--------+--------+--------+--------+--------+--------+--------|
-                       KC_SCLN, KC_LCTL, KC_LGUI, LOWER,   KC_ENT,    KC_SPC,  RAISE,   KC_RALT, KC_LALT, KC_DEL
+                       KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_ENT,    KC_SPC,  RAISE,   KC_RALT, KC_RCTL, KC_DEL
                 //  |----------------------------------------------| |----------------------------------------------|
   ),
 
@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //---------+--------+--------+--------+--------+--------+--------| |--------+--------+--------+--------+--------+--------+--------|
      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MUTE,   KC_MPLY, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, KC_SLSH, RSFT_T(KC_ENT),
   //---------+--------+--------+--------+--------+--------+--------| |--------+--------+--------+--------+--------+--------+--------|
-                       KC_SCLN, LCTL(KC_LALT), KC_LGUI, KC_TRNS, KC_ENT, KC_SPC, RAISE, KC_RALT, KC_LALT, KC_DEL
+                       KC_LCTL, LCTL(KC_LALT), KC_LGUI, KC_TRNS, KC_ENT, KC_SPC, RAISE, KC_RALT, KC_RCTL, KC_DEL
                 //  |----------------------------------------------| |----------------------------------------------|
   ),
 
@@ -97,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //---------+--------+--------+--------+--------+--------+--------| |--------+--------+--------+--------+--------+--------+--------|
      KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_MUTE,   KC_MPLY, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_BSLS, XXXXXXX,
   //---------+--------+--------+--------+--------+--------+--------| |--------+--------+--------+--------+--------+--------+--------|
-                       KC_SCLN, KC_LCTL, KC_LGUI, LOWER,   KC_ENT,    KC_SPC,  KC_TRNS, KC_RALT, KC_LALT, KC_DEL
+                       KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_ENT,    KC_SPC,  KC_TRNS, KC_RALT, KC_RCTL, KC_DEL
                 //  |----------------------------------------------| |----------------------------------------------|
   ),
 
