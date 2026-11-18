@@ -206,7 +206,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
                 uint8_t index = g_led_config.matrix_co[row][col];
                 if (index >= led_min && index < led_max) {
                     uint_fast16_t const key = keymap_key_to_keycode(layer, (keypos_t){col, row});
-                    if (index != NO_LED && key != KC_TRNS) {
+                    if (index != NO_LED && key > KC_TRNS) {
                         rgb_matrix_set_color(index, ledcol[layer].g, ledcol[layer].r, ledcol[layer].b);
                     }
                 }
