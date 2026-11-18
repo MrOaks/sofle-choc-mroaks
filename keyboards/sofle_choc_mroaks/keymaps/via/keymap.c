@@ -105,11 +105,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    //|-----------------------------------------------------|                  |-----------------------------------------------------|
      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,
   //|--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------|
-     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TOG,                     KC_MPRV, KC_MNXT, KC_MPLY, KC_MUTE, KC_VOLD, KC_VOLU,
+     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RM_TOGG,                     KC_MPRV, KC_MNXT, KC_MPLY, KC_MUTE, KC_VOLD, KC_VOLU,
   //|--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------|
-     XXXXXXX, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI,                     KC_CALC, KC_MYCM, KC_MAIL, KC_WSCH, KC_SLEP, KC_PWR,
+     XXXXXXX, RM_HUEU, RM_SATU, RM_VALU, RM_SPDU, RM_NEXT,                     KC_CALC, KC_MYCM, KC_MAIL, KC_WSCH, KC_SLEP, KC_PWR,
   //---------+--------+--------+--------+--------+--------+--------| |--------+--------+--------+--------+--------+--------+--------|
-     XXXXXXX, RGB_RMOD,RGB_HUD, RGB_SAD, RGB_VAD, RGB_SPD, KC_MUTE,   KC_MPLY, KC_CUT,  KC_COPY, KC_PASTE,KC_FIND, KC_UNDO, KC_AGIN,
+     XXXXXXX, RM_HUED, RM_SATD, RM_VALD, RM_SPDD, RM_PREV, KC_MUTE,   KC_MPLY, KC_CUT,  KC_COPY, KC_PASTE,KC_FIND, KC_UNDO, KC_AGIN,
   //---------+--------+--------+--------+--------+--------+--------| |--------+--------+--------+--------+--------+--------+--------|
                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
                 //  |----------------------------------------------| |----------------------------------------------|
