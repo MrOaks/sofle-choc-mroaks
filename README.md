@@ -123,8 +123,6 @@ Configuración física y keycaps montados en el teclado de referencia:
 
 ![Configuración de Keycaps - Sofle Choc Mr. Oaks](docs/keycapsConfiguration.png)
 
-> Para consultar el contraste histórico detallado entre la disposición física y las asignaciones del firmware, revisa el [Registro de Correcciones en Keymap](docs/correcciones_keymap.md).
-
 ---
 
 ## Repository Structure
@@ -152,7 +150,6 @@ sofle-choc-mroaks/
 │   └── 3d_print/               # STL 3D models (cases, foam templates, CAD models)
 └── docs/
     ├── build_guide_choc.md     # Guía detallada paso a paso de ensamblaje y soldadura
-    ├── correcciones_keymap.md  # Registro histórico de contrastes de keymap
     ├── keycapsConfiguration.png# Diagrama visual de referencia de teclas y distribución física
     └── referencias/            # Material de consulta externa y tutoriales (oled_tutorial)
 ```
