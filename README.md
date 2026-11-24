@@ -62,35 +62,45 @@ LShft Z     X     C     V     B     [Enc: Mute]     [Enc: Play]   N     M     , 
 
 ---
 
-### Capa 1: `_LOWER` (Navegación, Sistema y Flechas)
+### Capa 1: `_LOWER` (Teclado Numérico / Numpad, Símbolos y Herramientas)
 *Activación: Manteniendo pulsada la tecla **`Lower`** en el pulgar izquierdo.*
 
 ```text
-[ Mano Izquierda ]                                                [ Mano Derecha ]
-Esc   1     2     3     4     5                                   6     7     8     9     0     Bksp
-Power ·     ·     ·     ·     ·                                   ·     ·     ·     ·     ·     ·
-Sleep ·     ·     ·     ·     Alt+G                               ·     ·     ·     ↑     AltGr MYCM
-LShft ·     ·     ·     ·     ·     [Enc: Mute]     [Enc: Play]   ·     ·     ←     ↓     →     Shft/Ent
-            LCtl  C+Alt LGUI  (TRNS) Enter          Space Raise RAlt  RCtl  Del
+[ Mano Izquierda - Símbolos & Herramientas ]                      [ Mano Derecha - Numpad Contable ]
+`     !     @     #     $     %                                   (     7     8     9     /     Bksp
+Tab   Calc  MYCM  Mail  A+PSc Alt+G                               )     4     5     6     *     =
+LCtl  ¿     ?     ¡     ^     &                                   [     1     2     3     -     Del
+LShft ·     ·     ·     ·     ·     [Enc: Mute]     [Enc: Play]   ]     0     ,     .     +     Enter
+            LCtl  LAlt  LGUI  (TRNS) Enter          Space Raise RAlt  RCtl  Del
 ```
-* **Mano Izquierda:** Teclas de energía del sistema (`Power`, `Sleep`), combinación `Alt + G` y atajo `Ctrl + Alt`.
-* **Mano Derecha:** Bloque de flechas de navegación completo (`↑`, `↓`, `←`, `→`), acceso directo a `MYCM` (Mi PC / Explorador de archivos) y captura con `AltGr + PrintScreen`.
+* **Mano Izquierda (Símbolos & Herramientas):**
+  * **Fila Superior:** Símbolos directos (`` ` ``, `!`, `@`, `#`, `$`, `%`).
+  * **Fila 1:** Herramientas de productividad (`Calc`, `MYCM` Explorador, `Mail`, `Alt+PrtScn` captura de ventana activa, `Alt+G`).
+  * **Fila Central (Home Row):** Signos de puntuación en español directos (**`¿`**, **`?`**, **`¡`**) y operadores (`^`, `&`).
+* **Mano Derecha (Teclado Numérico Numpad):** Bloque numérico contable completo con operadores (`/`, `*`, `-`, `+`, `=`), delimitadores (`(`, `)`, `[`, `]`), y dígitos con coma, punto y `Enter`.
+* **Cluster de Pulgares:** Pulgar derecho mantiene modificadores completos (`Space`, `Raise`, `RAlt`, `RCtl`, `Del`).
 
 ---
 
-### Capa 2: `_RAISE` (Teclas de Función F1-F12 y Símbolos de Programación)
+### Capa 2: `_RAISE` (Navegación Invertida-T, Teclas F1-F12 y Sistema)
 *Activación: Manteniendo pulsada la tecla **`Raise`** en el pulgar derecho.*
 
 ```text
-[ Mano Izquierda ]                                                [ Mano Derecha ]
-Esc   F1    F2    F3    F4    F5                                  F6    F7    F8    F9    F10   Bksp
-F11   F12   !     @     #     $                                   ^     &     *     (     )     ·
-%     A     S     D     F     G                                   -     =     [     ]     |     ·
-LShft Z     X     C     V     B     [Enc: Mute]     [Enc: Play]   _     +     {     }     \     ·
+[ Mano Izquierda - F1-F12 & Sistema ]                             [ Mano Derecha - Navegación & Símbolos ]
+Esc   Power Sleep ·     ·     ·                                   Home  PgUp  PgDn  End   Del   Bksp
+F1    F2    F3    F4    F5    F6                                  {     }     \     /     [     ]
+F7    F8    F9    F10   F11   F12                                 ·     Home  ↑     End   ·     PgUp
+LShft Calc  MYCM  Mail  A+PSc Alt+G [Enc: Mute]     [Enc: Play]   ·     ←     ↓     →     ·     PgDn
             LCtl  LAlt  LGUI  Lower Enter           Space (TRNS)RAlt  RCtl  Del
 ```
-* **Fila Superior:** Teclas de función de `F1` a `F10` directas (con `F11` y `F12` en la columna izquierda).
-* **Bloque de Símbolos:** Acceso cómodo a corchetes (`[`, `]`), llaves (`{`, `}`), barras (`/`, `\`, `|`) y operadores matemáticos (`=`, `+`, `_`, `-`, `*`).
+* **Mano Izquierda (F1-F12 & Sistema):**
+  * **Fila Superior:** `Esc`, `Power` (Apagado) y `Sleep` (Suspender).
+  * **Filas 1 y 2:** Botonera completa de teclas de función de **`F1` a `F12`**.
+  * **Fila 3:** Atajos de productividad accesibles con una sola mano mientras el pulgar derecho sostiene `Raise`.
+* **Mano Derecha (Navegación Invertida-T & Documentos):**
+  * **Bloque de Flechas Invertida-T:** `↑`, `↓`, `←`, `→` con `Home`, `End`, `PgUp` y `PgDn` circundantes.
+  * **Fila Superior:** Navegación rápida de documentos (`Home`, `PgUp`, `PgDn`, `End`, `Del`, `Bksp`).
+  * **Fila 1:** Símbolos de programación (`{`, `}`, `\`, `/`, `[`, `]`).
 
 ---
 
