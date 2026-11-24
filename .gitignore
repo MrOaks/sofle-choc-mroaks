@@ -14,3 +14,11 @@ Thumbs.db
 *~
 .vscode/
 .idea/
+
+# KiCad backups and cache files
+*-bak
+*.kicad_pcb-bak
+*.sch-bak
+*_backup.kicad_mod
+fp-info-cache
+
