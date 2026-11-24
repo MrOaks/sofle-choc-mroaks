@@ -154,7 +154,6 @@ sofle-choc-mroaks/
     ├── build_guide_choc.md     # Guía detallada paso a paso de ensamblaje y soldadura
     ├── correcciones_keymap.md  # Registro histórico de contrastes de keymap
     ├── keycapsConfiguration.png# Diagrama visual de referencia de teclas y distribución física
-    ├── logos/                  # Mr. Oaks logos (high-res and 32px OLED bitmaps)
     └── referencias/            # Material de consulta externa y tutoriales (oled_tutorial)
 ```
 
