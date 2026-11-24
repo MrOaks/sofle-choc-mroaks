@@ -4,19 +4,126 @@ Custom QMK firmware, VIA dynamic configuration, and hardware manufacturing files
 
 ![Sofle Choc Photo](https://i.imgur.com/MhSEAZYh.jpg)
 
-## Features
+---
 
-- **Split Ergonomic Keyboard**: 58 keys (6×4+5 layout with thumb clusters).
-- **Switches**: Low-profile Kailh Choc switches with hotswap sockets.
-- **Controllers**: ProMicro USB-C (ATmega32u4, 5V / 16MHz) communicating via TRRS serial link.
-- **Rotary Encoders**: Dual EC11 rotary encoders with aluminum knobs for volume, media control, and scrolling.
-- **OLED Displays**: SSD1306 128x32 OLED screens featuring **Ikki the dog** keyboard pet (WPM-reactive animations: sit, walk, run, bark on Caps Lock, sneak), Mr. Oaks custom logos, and telemetry (layer state, WPM, locks).
-- **Per-Key RGB**: RGB Matrix powered by SK6812 Mini-E LEDs with layer-specific indicator colors and reactive animations.
-- **VIA Dynamic Keymap**: Full real-time key remapping, macros, and RGB matrix controls via [usevia.app](https://usevia.app) without needing to reflash.
-- **Spanish ISO Layout**: Native Spanish punctuation, letters (Ñ, Ç), and symbols mapped directly out-of-the-box.
-- **Automated Cloud CI**: GitHub Actions workflow that automatically compiles `.hex` firmware binaries on every push.
+## Hardware Specifications & Components
 
-> 📖 **Guía de Montaje:** Para el montaje físico, soldadura de componentes paso a paso e instrucciones de ensamblaje, consulta la [Guía de Construcción Sofle Choc](docs/build_guide_choc.md).
+El **Sofle Choc Mr. Oaks Edition** es un teclado mecánico ergonómico dividido de 58 teclas con disposición *columnar stagger*, diseñado para máxima productividad y comodidad postural.
+
+| Componente | Especificación Técnica | Detalle |
+| :--- | :--- | :--- |
+| **Distribución** | 58 teclas (Split 6×4 + 5 teclas por cluster de pulgar) | Ergonomía *columnar stagger* adaptada a la longitud natural de los dedos. |
+| **Switches** | Kailh Choc V1 (Low Profile) | Perfil ultra-bajo con sockets **Hotswap** para reemplazo sin soldadura. |
+| **Microcontroladores** | 2× ProMicro USB-C (ATmega32U4, 5V / 16MHz) | Uno en cada mitad, comunicados mediante bus serie a través de cable TRRS. |
+| **Pantallas OLED** | 2× SSD1306 OLED (128×32 píxeles, conexión I2C) | **Izquierda:** Telemetría en tiempo real (capa, WPM, mods, lock states).<br>**Derecha:** Mascota animada **Ikki the Dog** reactiva a la velocidad de tecleo y logo Mr. Oaks. |
+| **Encoders Rotatorios** | 2× EC11 con pulsador integrado | Diales metálicos de aluminio para control de audio, multimedia y desplazamiento. |
+| **Iluminación Per-Key** | 58× LEDs RGB Matrix SK6812 Mini-E | Matriz direccionable individual con animaciones y colores inteligentes de capa. |
+| **Placas y Chasis** | FR4 Switch Top Plate + Cajas de madera CNC / 3D | Archivos incluidos para fabricación en CNC (madera maciza) e impresión 3D. |
+| **Configurabilidad** | Compatible con **VIA (usevia.app)** | Remapeo de teclas, capas, macros y colores en tiempo real sin flashear. |
+
+---
+
+## Efectos de Iluminación RGB Matrix (De Serie)
+
+El teclado incorpora una selección curada de **6 modos de iluminación** optimizados para equilibrar espectacularidad visual y uso de memoria en el microcontrolador ATmega32U4:
+
+1. **Color Estático (`SOLID_COLOR`)**: Todo el teclado iluminado con un color fijo personalizable en Tono (`Hue`), Saturación (`Sat`) y Brillo (`Brightness`).
+2. **Alfas vs Modificadores (`ALPHAS_MODS`)**: Ilumina las teclas de letras y números en un color, y los modificadores (Shift, Ctrl, Alt, Gui, Enter...) en un tono de contraste.
+3. **Respiración (`BREATHING`)**: Efecto de pulsación luminosa suave que sube y baja de intensidad de forma relajante.
+4. **Ciclo Arcoíris (`CYCLE_ALL`)**: Todo el teclado va recorriendo el espectro cromático de forma gradual y al unísono.
+5. **Onda Arcoíris / Wave (`CYCLE_LEFT_RIGHT`)**: El clásico efecto de ola arcoíris que fluye suavemente de izquierda a derecha a través de ambas mitades.
+6. **Reactivo al Tecleo (`SOLID_REACTIVE_SIMPLE`)**: Las teclas permanecen en reposo y se encienden al ser pulsadas, desvaneciéndose suavemente tras soltarlas.
+
+> 💡 **Indicadores Inteligentes de Capa:** Al cambiar a las capas *Lower*, *Raise* o *Adjust*, el teclado activa automáticamente el resaltado de capas: **únicamente se iluminan las teclas que tienen una función asignada en esa capa**, manteniendo apagadas las teclas transparentes/inactivas.
+
+---
+
+## Distribución de Capas de Fábrica (Preconfigurada en Firmware y VIA)
+
+> [!NOTE]
+> Esta es la distribución de serie incluida en el firmware y en el archivo [`sofle_choc_mroaks_layout.json`](sofle_choc_mroaks_layout.json). Gracias a **VIA**, puedes remapear cualquier tecla, mover funciones o crear macros a tu gusto en cualquier momento desde [usevia.app](https://usevia.app) sin necesidad de recompilar.
+
+### Capa 0: Base (QWERTY ISO Español)
+Disposición alfanumérica estándar en español con teclas de puntuación completas (`Ñ`, `¿`, `¡`, `<`, `>`):
+
+```text
+[ Mano Izquierda ]                                                [ Mano Derecha ]
+Esc   1     2     3     4     5                                   6     7     8     9     0     Bksp
+Tab   Q     W     E     R     T                                   Y     U     I     O     P     < / >
+LCtl  A     S     D     F     G                                   H     J     K     L     Ñ     ' / ?
+LShft Z     X     C     V     B     [Enc: Mute]     [Enc: Play]   N     M     ,     .     -     Shft/Ent
+            Code  Meta  Oaks  Lower Enter           Space Raise AltGr RCtrl Del
+```
+* **Cluster Pulgar Izquierdo:** `Code` (`LCtl`), `Meta` (`LAlt`), `MR. OAKS` (`LGUI` / Windows), `Lower` (`MO(1)`), `Enter`.
+* **Cluster Pulgar Derecho:** `Space`, `Raise` (`MO(2)`), `Alt Gr` (`RAlt`), `Ctrl` (`RCtl`), `Del`.
+* **Encoders:**
+  * **Izquierdo:** Giro = `Volumen + / -`, Pulsador = `Mute`.
+  * **Derecho:** Giro = `Scroll / Navegación`, Pulsador = `Play/Pause`.
+
+---
+
+### Capa 1: `_LOWER` (Navegación, Sistema y Flechas)
+*Activación: Manteniendo pulsada la tecla **`Lower`** en el pulgar izquierdo.*
+
+```text
+[ Mano Izquierda ]                                                [ Mano Derecha ]
+Esc   1     2     3     4     5                                   6     7     8     9     0     Bksp
+Power ·     ·     ·     ·     ·                                   ·     ·     ·     ·     ·     ·
+Sleep ·     ·     ·     ·     Alt+G                               ·     ·     ·     ↑     AltGr MYCM
+LShft ·     ·     ·     ·     ·     [Enc: Mute]     [Enc: Play]   ·     ·     ←     ↓     →     Shft/Ent
+            LCtl  C+Alt LGUI  (TRNS) Enter          Space Raise RAlt  RCtl  Del
+```
+* **Mano Izquierda:** Teclas de energía del sistema (`Power`, `Sleep`), combinación `Alt + G` y atajo `Ctrl + Alt`.
+* **Mano Derecha:** Bloque de flechas de navegación completo (`↑`, `↓`, `←`, `→`), acceso directo a `MYCM` (Mi PC / Explorador de archivos) y captura con `AltGr + PrintScreen`.
+
+---
+
+### Capa 2: `_RAISE` (Teclas de Función F1-F12 y Símbolos de Programación)
+*Activación: Manteniendo pulsada la tecla **`Raise`** en el pulgar derecho.*
+
+```text
+[ Mano Izquierda ]                                                [ Mano Derecha ]
+Esc   F1    F2    F3    F4    F5                                  F6    F7    F8    F9    F10   Bksp
+F11   F12   !     @     #     $                                   ^     &     *     (     )     ·
+%     A     S     D     F     G                                   -     =     [     ]     |     ·
+LShft Z     X     C     V     B     [Enc: Mute]     [Enc: Play]   _     +     {     }     \     ·
+            LCtl  LAlt  LGUI  Lower Enter           Space (TRNS)RAlt  RCtl  Del
+```
+* **Fila Superior:** Teclas de función de `F1` a `F10` directas (con `F11` y `F12` en la columna izquierda).
+* **Bloque de Símbolos:** Acceso cómodo a corchetes (`[`, `]`), llaves (`{`, `}`), barras (`/`, `\`, `|`) y operadores matemáticos (`=`, `+`, `_`, `-`, `*`).
+
+---
+
+### Capa 3: `_ADJUST` (Tri-Layer: Control Total RGB, Multimedia, Herramientas y Bootloader)
+*Activación automática: Pulsando **`Lower` + `Raise`** a la vez (`MO(1) + MO(2)`).*
+
+```text
+[ Mano Izquierda - Control RGB Matrix ]                           [ Mano Derecha - Sistema & Multimedia ]
+·     ·     ·     ·     ·     ·                                   ·     ·     ·     ·     ·     RESET
+·     ·     ·     ·     ·     RMTgg                               Prvs  Next  Play  Mute  Vol-  Vol+
+·     RMH+  RMSt+ RMVA+ RMSp+ RMMd+                               Calc  MYCM  Mail  Sleep Power ·
+·     RMH-  RMSt- RMVA- RMSp- RMMd- [Enc: Mute]     [Enc: Play]   Cut   Copy  Paste Find  Undo  ·
+            (TRNS)(TRNS)(TRNS)(TRNS)(TRNS)          (TRNS)(TRNS)(TRNS)(TRNS)(TRNS)
+```
+* **Mano Izquierda (Consola RGB Matrix):**
+  * **Tecla `T`:** `RMTgg` *(Encender / Apagar la iluminación RGB Matrix)*.
+  * **Fila Central (`A`, `S`, `D`, `F`, `G`):** `RMH+` *(Tono +)*, `RMSt+` *(Saturación +)*, `RM VA+` *(Brillo +)*, `RMSp+` *(Velocidad +)*, `RMMd+` *(Modo siguiente)*.
+  * **Fila Inferior (`Z`, `X`, `C`, `V`, `B`):** `RMH-` *(Tono -)*, `RMSt-` *(Saturación -)*, `RM VA-` *(Brillo -)*, `RMSp-` *(Velocidad -)*, `RMMd-` *(Modo anterior)*.
+* **Mano Derecha (Multimedia, Sistema y Bootloader):**
+  * **Esquina Superior Derecha (Tecla `Bksp`):** **`RESET`** *(Entra directamente al modo Bootloader para flashear sin usar pinzas ni desconectar cables)*.
+  * **Fila 1:** `Prvs`, `Next`, `Play`, `Mute`, `Vol -`, `Vol +`.
+  * **Fila 2:** `Calc` *(Calculadora de Windows)*, `MYCM` *(Explorador de archivos)*, `Mail` *(Correo)*, `Sleep` *(Suspender)*, `Power` *(Apagar)*.
+  * **Fila 3:** Atajos de edición rápida: `Cut` *(Cortar)*, `Copy` *(Copiar)*, `Paste` *(Pegar)*, `Find` *(Buscar)*, `Undo` *(Deshacer)*.
+
+---
+
+## Keycaps Configuration Diagram
+
+Configuración física y keycaps montados en el teclado de referencia:
+
+![Configuración de Keycaps - Sofle Choc Mr. Oaks](docs/keycapsConfiguration.png)
+
+> Para consultar el contraste histórico detallado entre la disposición física y las asignaciones del firmware, revisa el [Registro de Correcciones en Keymap](docs/correcciones_keymap.md).
 
 ---
 
@@ -53,69 +160,17 @@ sofle-choc-mroaks/
 
 ---
 
-## Keycaps Configuration & Layout
-
-Configuración y distribución física de teclas del teclado:
-
-![Configuración de Keycaps - Sofle Choc Mr. Oaks](docs/keycapsConfiguration.png)
-
-> Para consultar el contraste detallado entre la disposición física y las asignaciones del firmware, revisa el [Registro de Correcciones en Keymap](docs/correcciones_keymap.md).
-
----
-
-## Keymaps Included
-
-### 1. `via` (Flagship - VIA Dynamic Configuration)
-Es el keymap oficial de producción con soporte completo para la interfaz web [VIA (usevia.app)](https://usevia.app):
-- **Mitad Izquierda (`via_left`)**: Compila `sofle_choc_via_left.hex` como Master USB. Maneja la conexión WebHID con el navegador, estado de capas en pantalla OLED, WPM, indicadores RGB tecla a tecla y layout en español.
-- **Mitad Derecha (`via_right`)**: Compila `sofle_choc_via_right.hex` como Slave. Ejecuta la animación de la mascota **Ikki the Dog** reactiva a la velocidad de escritura (WPM), sincronización de LEDs y encoder derecho.
-- **Unificado (`via`)**: Compila `sofle_choc_via.hex` con autodetección dinámica de mitad.
-
-### 2. `mroaks` (Static QMK Firmware)
-Versión clásica alternativa para usuarios que prefieren tener el layout estático fijado en el código C sin necesidad de VIA:
-- **`mroaks_left`**: `sofle_choc_mroaks_left.hex`
-- **`mroaks_right`**: `sofle_choc_mroaks_right.hex`
-
-### 3. `default`
-- Layout de referencia estándar de QMK para Sofle Choc.
-
----
-
-## Hardware & Cases
-
-### PCB Design & Gerbers (`hardware/pcb/`, `hardware/gerbers/`)
-- `hardware/pcb/SofleKeyboard.kicad_pcb` & `SofleKeyboard.sch`: Complete KiCad project for Sofle Choc v2.1 with Kailh Choc hotswap sockets, TRRS jack, and SK6812 RGB.
-- `hardware/pcb/top_plate/`: KiCad project for manufacturing the FR4 switch top plate.
-- `hardware/gerbers/gerber-choc-pcb-v2.1.zip`: Production-ready Gerber archive for JLCPCB/PCBWay (main PCB).
-- `hardware/gerbers/gerber-choc-top-v2.1.1.zip`: Production-ready Gerber archive for JLCPCB/PCBWay (top plate).
-
-### CNC Wood Cases (`hardware/cnc/`)
-Contiene archivos vectoriales (`.dxf`) y trayectorias de corte listas para fresar cajas de madera maciza en CNC:
-- `Madera2.dxf` / `Madera2.gcode`: Cuerpo principal superior e inferior.
-- `IzqDelantera.gcode`, `IzqTRasera.gcode`, `DerDelantera.gcode`, `DerTRasera.gcode`: Mecanizados específicos para cada mitad.
-- Rutinas de planeado de superficies (`cepillado1`, `cepillado2`).
-
-### 3D Printing (`hardware/3d_print/`)
-- `Sofle Case.stl`: Caja imprimible en 3D para montaje estándar.
-- `Sofle+Choc+Case+Battery+without+3.5mm.stl`: Versión con espacio para batería (montajes inalámbricos).
-- `Foam Template.stl`: Plantilla para corte de espuma amortiguadora de sonido.
-- Modelos CAD de referencia de switches, keycaps, encoders, OLEDs y Pro Micro.
-
----
-
 ## Building the Firmware
 
 ### Option A: Cloud Build (GitHub Actions - Recommended)
-Cada `push` a las ramas `main` o `release-via` compila automáticamente el firmware en la nube:
+Cada `push` a `main` compila automáticamente el firmware en la nube:
 1. Dirígete a la pestaña **Actions** en este repositorio.
 2. Selecciona la ejecución más reciente.
 3. Descarga el paquete **`sofle-choc-firmware`** con todos los binarios `.hex` listos para usar.
 
-### Option B: Local Compilation with QMK CLI / MSYS
-Para compilar localmente con el CLI de QMK:
-
+### Option B: Local Compilation with QMK CLI
 ```bash
-# Compilar firmware VIA (Recomendado)
+# Compilar firmware VIA oficial (Recomendado)
 qmk compile -kb sofle_choc_mroaks -km via_left
 qmk compile -kb sofle_choc_mroaks -km via_right
 
@@ -132,14 +187,14 @@ qmk compile -kb sofle_choc_mroaks -km mroaks_right
 
 1. **Mitad Izquierda (Master)**:
    - Conecta la mitad izquierda del teclado al PC mediante USB.
-   - Pon el controlador en modo bootloader (doble pulsación al botón de **Reset** o atajo `Lower + Raise + Reset`).
-   - Flashea el archivo **`sofle_choc_via_left.hex`** con **QMK Toolbox** (Microcontrolador: `atmega32u4`).
+   - Pon el controlador en modo bootloader (pulsando **`Lower + Raise + Reset`** en el teclado, o con doble pulsación al botón físico de Reset).
+   - Flashea el archivo **`sofle_choc_via_left.hex`** con **QMK Toolbox** o el script automatizado `flash_left.ps1` (Microcontrolador: `atmega32u4`).
    - Desconecta la mitad izquierda.
 
-2. **Mitad Derecha (Slave)**:
+2. **Mitad Derecha (Slave con Ikki the Dog)**:
    - Conecta la mitad derecha del teclado al PC mediante USB.
-   - Pulsa el botón de **Reset** dos veces seguidas para entrar en modo bootloader.
-   - Flashea el archivo **`sofle_choc_via_right.hex`** con **QMK Toolbox**.
+   - Pulsa el botón físico de **Reset** dos veces seguidas para entrar en bootloader.
+   - Flashea el archivo **`sofle_choc_via_right.hex`** con **QMK Toolbox** o el script `flash_right.ps1`.
    - Desconecta la mitad derecha.
 
 3. **Puesta en marcha y VIA**:
